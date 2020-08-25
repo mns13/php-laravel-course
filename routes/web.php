@@ -5,6 +5,7 @@ use App\Post;
 use App\User;
 use App\Role;
 use App\Country;
+use App\Photo;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -169,16 +170,20 @@ Route::get('/user/country', function(){
 
 ### Polymorphic Relations
 
-Route::get('/user/photos', function(){
-    $user = User::find(1);
-    foreach($user->photos as $photo){
-        return $photo->path;
-    }
-});
-
-Route::get('/post/{id}/photos', function(){
-    $user = Post::find(1);
-    foreach($user->photos as $photo){
-        echo $photo->path . "<br>";
-    }
+//Route::get('/user/photos', function(){
+//    $user = User::find(1);
+//    foreach($user->photos as $photo){
+//        return $photo->path;
+//    }
+//});
+//
+//Route::get('/post/{id}/photos', function(){
+//    $user = Post::find(1);
+//    foreach($user->photos as $photo){
+//        echo $photo->path . "<br>";
+//    }
+//});
+Route::get('/photo/{id}/post', function($id){
+      $photo = Photo::findOrFail($id);
+      return $photo->imageable;
 });
