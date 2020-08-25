@@ -183,7 +183,17 @@ Route::get('/user/country', function(){
 //        echo $photo->path . "<br>";
 //    }
 //});
+
 Route::get('/photo/{id}/post', function($id){
       $photo = Photo::findOrFail($id);
       return $photo->imageable;
+});
+
+### many to many Polymorphic relations
+
+Route::get('/post/tag', function(){
+    $post = Post::find(1);
+    foreach($post->tags as $tag){
+        echo $tag->name . "<br>";
+    }
 });
