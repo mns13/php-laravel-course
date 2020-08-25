@@ -169,16 +169,16 @@ Route::get('/user/country', function(){
 
 ### Polymorphic Relations
 
-Route::get('/photos', function(){
+Route::get('/user/photos', function(){
     $user = User::find(1);
     foreach($user->photos as $photo){
         return $photo->path;
     }
 });
 
-Route::get('/post/photos', function(){
+Route::get('/post/{id}/photos', function(){
     $user = Post::find(1);
     foreach($user->photos as $photo){
-        return $photo->path;
+        echo $photo->path . "<br>";
     }
 });
