@@ -6,6 +6,7 @@ use App\User;
 use App\Role;
 use App\Country;
 use App\Photo;
+use App\Tag;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -191,9 +192,19 @@ Route::get('/photo/{id}/post', function($id){
 
 ### many to many Polymorphic relations
 
-Route::get('/post/tag', function(){
-    $post = Post::find(1);
-    foreach($post->tags as $tag){
-        echo $tag->name . "<br>";
-    }
-});
+//Route::get('/post/tag', function(){
+//    $post = Post::find(1);
+//    foreach($post->tags as $tag){
+//        echo $tag->name . "<br>";
+//    }
+//});
+
+Route::get(
+  '/tag/post',
+  function(){
+      $tag = Tag::find(2);
+      foreach($tag->posts as $post){
+          echo $post->title . "<br>";
+      }
+  }
+);
