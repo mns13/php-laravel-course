@@ -3,11 +3,15 @@
 @section('content')
     <h1>Create a Post</h1>
 
-    {!! Form::open(['url'=>'/posts']) !!}
+    {!! Form::open(['url'=>'/posts','files'=>'true']) !!}
+        <div class="form-group">
+            {!! Form::file('image', ['class'=>'form-control']) !!}
+        </div>
         <div class="form-group">
             {!! Form::label('title', 'Posts Title:') !!}
             {!! Form::text('title', null, ['class'=>'form-control']) !!}
         </div>
+
         <div class="form-group">
             {!! Form::submit('Create',['class'=>'btn btn-primary']) !!}
         </div>
