@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,8 +15,6 @@ class PostController extends Controller
     public function index($data)
     {
         //
-        return "It's Working! Here the data: " . $data;
-
     }
 
     /**
@@ -25,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -36,7 +35,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create($request->all());
+        # another way to do the same
+//        $post = new Post();
+//        $post->title = $request->title;
+//        $post->save();
     }
 
     /**
@@ -85,16 +88,19 @@ class PostController extends Controller
         //
     }
 
-    public function contact()
-    {
-        $coworkers = ['Peter', 'Andy', 'Louie', 'Edwin'];
-        return view('contact', compact('coworkers'));
-    }
 
-    public function showPost($id)
-    {
-        return view('post')->with('id', $id);
 
-//        return view('post', compact('id', 'name', 'note'));
-    }
+
+
+
+//    public function contact()
+//    {
+//        $coworkers = ['Peter', 'Andy', 'Louie', 'Edwin'];
+//        return view('contact', compact('coworkers'));
+//    }
+//
+//    public function showPost($id)
+//    {
+//        return view('post')->with('id', $id);
+//    }
 }

@@ -18,13 +18,50 @@ use App\Tag;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//
-//Route::get('/contact', 'PostController@contact');
-//
-//Route::get('/post/{id}','PostController@showPost');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| CRUD APPLICATION
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('/posts', 'PostController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
@@ -54,6 +91,8 @@ use App\Tag;
 //   $delete = DB::delete('delete from posts where id = ?', [1]);
 //   return "success";
 //});
+
+
 
 
 /*
@@ -123,21 +162,21 @@ use App\Tag;
 
 
 // One to One relationship
-Route::get('/user/{id}/post', function($id){
-    return User::find($id)->post;
-});
-
-Route::get('/post/{id}/user', function($id){
-    return Post::find($id)->user->name;
-});
+//Route::get('/user/{id}/post', function($id){
+//    return User::find($id)->post;
+//});
+//
+//Route::get('/post/{id}/user', function($id){
+//    return Post::find($id)->user->name;
+//});
 
 ### One to many
-Route::get('/posts/{id}', function($id){
-    $user = User::find($id);
-    foreach($user->posts as $post){
-    echo $post->title . "<br>";
-    }
-});
+//Route::get('/posts/{id}', function($id){
+//    $user = User::find($id);
+//    foreach($user->posts as $post){
+//    echo $post->title . "<br>";
+//    }
+//});
 
 ### many to many relationship
 
@@ -148,26 +187,26 @@ Route::get('/posts/{id}', function($id){
 //    }
 //});
 
-Route::get('/user/{id}/role', function($id){
-    $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
-    return $user;
-});
+//Route::get('/user/{id}/role', function($id){
+//    $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
+//    return $user;
+//});
 
 ### Accessing the intermediate table / pivot
-Route::get('/user/pivot', function(){
-    $user = User::find(1);
-    foreach($user->roles as $role){
-        echo $role->pivot->created_at;
-    }
-});
+//Route::get('/user/pivot', function(){
+//    $user = User::find(1);
+//    foreach($user->roles as $role){
+//        echo $role->pivot->created_at;
+//    }
+//});
 
 
-Route::get('/user/country', function(){
-    $user = Country::find(2);
-    foreach($user->posts as $post){
-        echo $post->title;
-    }
-});
+//Route::get('/user/country', function(){
+//    $user = Country::find(2);
+//    foreach($user->posts as $post){
+//        echo $post->title;
+//    }
+//});
 
 ### Polymorphic Relations
 
@@ -185,10 +224,10 @@ Route::get('/user/country', function(){
 //    }
 //});
 
-Route::get('/photo/{id}/post', function($id){
-      $photo = Photo::findOrFail($id);
-      return $photo->imageable;
-});
+//Route::get('/photo/{id}/post', function($id){
+//      $photo = Photo::findOrFail($id);
+//      return $photo->imageable;
+//});
 
 ### many to many Polymorphic relations
 
@@ -199,12 +238,12 @@ Route::get('/photo/{id}/post', function($id){
 //    }
 //});
 
-Route::get(
-  '/tag/post',
-  function(){
-      $tag = Tag::find(2);
-      foreach($tag->posts as $post){
-          echo $post->title . "<br>";
-      }
-  }
-);
+//Route::get(
+//  '/tag/post',
+//  function(){
+//      $tag = Tag::find(2);
+//      foreach($tag->posts as $post){
+//          echo $post->title . "<br>";
+//      }
+//  }
+//);
