@@ -22,14 +22,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+//Route::middleware(['web'])->group(function(){
+//
+//});
+Route::resource('/posts', 'PostController');
 /*
 |--------------------------------------------------------------------------
 | CRUD APPLICATION
 |--------------------------------------------------------------------------
 */
 
-Route::resource('/posts', 'PostController');
+
 
 
 
