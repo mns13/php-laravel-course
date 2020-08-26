@@ -5,9 +5,9 @@
 {{--    <form action="/posts" method="post">--}}
 
     {!! Form::open(['url'=>'/posts']) !!}
-        @csrf
-        <input type="text" name="title">
-        <button type="submit" name="submit">submit</button>
+        {!! Form::label('title', 'Posts Title:') !!}
+        {!! Form::text('title') !!}
+        {!! Form::submit('Create') !!}
     {!! Form::close() !!}
 
 {{--    </form>--}}
