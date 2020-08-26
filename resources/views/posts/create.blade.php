@@ -5,7 +5,7 @@
 
     {!! Form::open(['url'=>'/posts','files'=>'true']) !!}
         <div class="form-group">
-            {!! Form::file('image', ['class'=>'form-control']) !!}
+            {!! Form::file('photo', ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('title', 'Posts Title:') !!}

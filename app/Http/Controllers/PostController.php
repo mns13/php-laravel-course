@@ -37,15 +37,26 @@ class PostController extends Controller
      */
     public function store(CreatePostRequest $request) #was(Request $request)
     {
+       $input = $request->all();
+       if($file = $request->file('photo')){
+           $name = $file->getClientOriginalName();
+           $file->move('images', $name);
+           $input['path'] = $name;
+       }
+       Post::create($input);
+
+
 //        $validatedData = $request->validate([
 //            'title' => 'required'
 //        ]);
 
-        Post::create($request->all());
+//        Post::create($request->all());
+
         # another way to do the same
 //        $post = new Post();
 //        $post->title = $request->title;
 //        $post->save();
+
         return redirect('posts');
     }
 
