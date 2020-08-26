@@ -7,6 +7,7 @@ use App\Role;
 use App\Country;
 use App\Photo;
 use App\Tag;
+use Illuminate\Support\Carbon;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +23,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::middleware(['web'])->group(function(){
-//
-//});
+Route::get('/dates', function(){
+    $date = new DateTime('+1 week');
+    echo $date->format('d-m-Y');
+    echo "<br>";
+    echo Carbon::now()->addHours(10)->diffForHumans();
+    echo "<br>";
+    echo Carbon::now()->subMonths(10)->diffForHumans();
+
+});
+
+Route::get('/getname', function(){
+    $user = User::find(1);
+    echo $user->name;
+});
+
+Route::get('/setname', function(){
+    $user = User::find(1);
+    $user->name = "william";
+    $user->save();
+});
+
+
+
+
 Route::resource('/posts', 'PostController');
 /*
 |--------------------------------------------------------------------------
